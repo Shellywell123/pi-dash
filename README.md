@@ -10,6 +10,7 @@ git clone git@github.com:Shellywell123/pi-dash.git ~/
 cd ~/pi-dash
 ./setup.sh
 ```
+To see your PRs you will need to install [gh-cli](https://cli.github.com/) and authorize it with the following command 
 ```
 sudo gh auth login --with-token < token.txt
 ```
