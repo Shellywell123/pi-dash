@@ -1,5 +1,6 @@
 # pi-dash
 Small info panel for my development needs, built to run on a small LCD screen on Ubuntu 24.
+(Code is currently rather hacky bash scripts) 
 ![image](https://github.com/Shellywell123/pi-dash/blob/main/docs/photo.png)
 
 ## setup
