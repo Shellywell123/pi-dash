@@ -1,9 +1,9 @@
 # this must be ran from inside the scripts dir
 
-#install curl
+# install curl
 sudo apt install curl -y
 
-# instal nslookup
+# install nslookup
 sudo apt-get install dnsutils -y
 
 # install mcstatus
