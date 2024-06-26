@@ -1,6 +1,11 @@
 # pi-dash
-Small info panel for my development needs, built to run on a small LCD screen on Ubuntu 24.
-(Code is currently rather hacky bash scripts) 
+Small info panel for my development needs, built to run on a small LCD screen on Ubuntu 24.\
+
+## Features
+- Lists active github user PRs
+- [wtfutil]() to display various bits of info including hacker news
+- a hacky bash script to monitor some containers hosted on another machine
+
 ![image](https://github.com/Shellywell123/pi-dash/blob/main/docs/photo.png)
 
 ## setup
