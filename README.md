@@ -1,8 +1,8 @@
 # pi-dash
-Small info panel for my development needs, built to run on a small LCD screen on Ubuntu 24.\
+Small info panel for my development needs, built to run on a small LCD screen on Ubuntu 24.
 
 ## Features
-- Lists active github user PRs
+- Lists active GitHub user PRs
 - [wtfutil](https://wtfutil.com/) to display various bits of info including hacker news
 - a hacky bash script to monitor some containers hosted on another machine
 
