@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Exec=gnome-terminal --full-screen --command "pi-dash"
+Hidden=false
+NoDisplay=false
+X-GNOME-Autostart-enabled=true
+Name[en_GB]=terminal
+Name=terminal
+Comment[en_GB]=
+Comment=

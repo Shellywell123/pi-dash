@@ -1,0 +1,8 @@
+#! /usr/bin/bash 
+# cd into repo so that the relative paths work
+cd /home/$USER/pi-dash
+
+# start a tmux session with 2 panes
+# one for pr list
+# second for wtfutil
+tmux new-session 'sh scripts/list-prs.sh' \; split-window -v 'wtfutil --config=wtfutil.yml' \; resize-pane -t 0 -y 6
