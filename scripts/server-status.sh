@@ -63,20 +63,12 @@ elif [[ $mine_status == "starting" ]]; then
 elif [[ $mine_status != "" ]]; then
         mine_status="\e[0;31m$mine_status\e[0m"
 else
-	mine_status="\e[0;31mOFFLINE\e[0m $mine_status\e[0m"
+	mine_status="\e[0;31mOFFLINE\e[0m"
 fi
 
 mine_port=25565
 mine_users=$(python3 scripts/minecraft-get-number-of-players.py $the_server_ip)
-if [[ $mine_users == "" ]]; then
-	mine_users="-"
-fi
-
-if  [[ $mine_users != "0" ]]; then
-        mine_users="\e[0;32m$mine_users\e[0m"
-else
-        mine_users="\e[0;31m$mine_users\e[0m"
-fi
+mine_users=$(format_users_number $mine_users)
 
 # ------------------------------------------
 # Factorio

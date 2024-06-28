@@ -11,8 +11,8 @@ Small info panel for my development needs, built to run on a small LCD screen on
 ## setup
 To get going clone the repo and run the setup script.
 ```
-git clone git@github.com:Shellywell123/pi-dash.git ~/
-cd ~/pi-dash
+git clone git@github.com:Shellywell123/pi-dash.git ~/pi-dash
+cd ~/pi-dash/scripts
 ./setup.sh
 ```
 To see your PRs you will need to install [gh-cli](https://cli.github.com/) and authorize it with the following command 
