@@ -1,3 +1,4 @@
+#! /usr/bin/bash
 # this must be ran from inside the scripts dir
 
 # install curl
