@@ -1,15 +1,7 @@
 #! /usr/bin/bash
 
 # ------------------------------------------
-# IPs
-# ------------------------------------------
-public_ip=$(curl https://ipinfo.io/ip)
-local_ip=$(hostname -I | cut -d' ' -f1)
-berry_ip=$(nslookup berry | grep Address | tail -n 1 | cut -d " " -f2)
-the_server_ip=$(nslookup the-server | grep Address | tail -n 1 | cut -d " " -f2)
-
-# ------------------------------------------
-# Function
+# Functions
 # ------------------------------------------
 
 format_docker_server() {
@@ -80,7 +72,7 @@ fact_users=$(ssh the-server 'rcon -a the-server:27015 -p $(cat ../../docker/fact
 fact_users=$(format_users_number $fact_users)
 
 # ------------------------------------------
-# Asseto Corsa
+# Asseto Corsa (yet to setup)
 # ------------------------------------------
 asse_status="-      "
 asses_status=$(format_docker_server $asse_status)
