@@ -3,7 +3,6 @@
 # ------------------------------------------
 # Functions
 # ------------------------------------------
-
 format_docker_server() {
 	status=$1
 	if [[ $status == "running" ]]; then
