@@ -45,7 +45,8 @@ the_server_ip=$(get_ip_from_hostname the-server)
 # ------------------------------------------
 # Asseto Corsa (yet to setup)
 # ------------------------------------------
-asse_ip=$(get_ip_from_hostname the-server)
+asses_hostname=the-server
+asse_ip=$(get_ip_from_hostname $asse_hostname)
 asse_status="-      "
 asse_status=$(format_docker_server $asse_status)
 asse_port="-    "
@@ -55,8 +56,9 @@ asse_users=$(format_users_number $asse_users)
 # -------------------------------------------
 # Autocorreet
 # ------------------------------------------
-auto_ip=$(get_ip_from_hostname the-server)
-auto_status=$(ssh $auto_ip docker container inspect -f "{{.State.Status}}" autocorreet)
+auto_hostname=the-server
+auto_ip=$(get_ip_from_hostname $auto_hostname)
+auto_status=$(ssh $auto_hostname docker container inspect -f "{{.State.Status}}" autocorreet)
 auto_status=$(format_docker_server $auto_status)
 auto_port="8080"
 auto_users=""
@@ -65,8 +67,9 @@ auto_users=$(format_users_number $auto_users)
 # ------------------------------------------
 # Factorio
 # ------------------------------------------
-fact_ip=$(get_ip_from_hostname the-server)
-fact_status=$(ssh $fact_ip docker container inspect -f "{{.State.Status}}" factorio)
+fact_hostname=the-server
+fact_ip=$(get_ip_from_hostname $fact_hostname)
+fact_status=$(ssh $fact_hostname docker container inspect -f "{{.State.Status}}" factorio)
 fact_status=$(format_docker_server $fact_status)
 fact_port=34197
 fact_users=$(ssh the-server 'rcon -a the-server:27015 -p $(cat ../../docker/factorio-storage/config/rconpw) "/players online" | cut -d "(" -f2 | cut -d ")" -f1 | head -n 1')
@@ -75,8 +78,9 @@ fact_users=$(format_users_number $fact_users)
 # ------------------------------------------
 # Grafana
 # ------------------------------------------
-graf_ip=$(get_ip_from_hostname the-server)
-graf_status=$(ssh $graf_ip docker container inspect -f "{{.State.Status}}" grafana)
+graf_hostname=the-server
+graf_ip=$(get_ip_from_hostname $graf_hostname)
+graf_status=$(ssh $graf_hostname docker container inspect -f "{{.State.Status}}" grafana)
 graf_status=$(format_docker_server $graf_status)
 graf_port="3000"
 graf_users=$(curl -s "$grafana_user:$grafana_password@$graf_ip:$graf_port/api/users" | jq -r 'length')
@@ -85,8 +89,9 @@ graf_users=$(format_users_number $graf_users)
 # ------------------------------------------
 # Minecraft
 # ------------------------------------------
-mine_ip=$(get_ip_from_hostname the-server)
-mine_status=$(ssh $mine_ip docker container inspect -f "{{.State.Health.Status}}" minecraft)
+mine_hostname=the-server
+mine_ip=$(get_ip_from_hostname $mine_hostname)
+mine_status=$(ssh $mine_hostname docker container inspect -f "{{.State.Health.Status}}" minecraft)
 
 if   [[ $mine_status == "healthy" ]]; then
 	mine_status="\e[0;32mONLINE \e[0m"
@@ -105,8 +110,9 @@ mine_users=$(format_users_number $mine_users)
 # -------------------------------------------
 # Satisfactory
 # ------------------------------------------
-sati_ip=$(get_ip_from_hostname the-server)
-sati_status=$(ssh $sati_ip docker container inspect -f "{{.State.Status}}" satisfactory)
+sati_hostname=the-server
+sati_ip=$(get_ip_from_hostname $sati_hostname)
+sati_status=$(ssh $sati_hostname docker container inspect -f "{{.State.Status}}" satisfactory)
 sati_status=$(format_docker_server $sati_status)
 sati_port="15777"
 sati_users=""
@@ -115,8 +121,9 @@ sati_users=$(format_users_number $sati_users)
 # -------------------------------------------
 # Syncthing
 # ------------------------------------------
-sync_ip=$(get_ip_from_hostname the-server)
-sync_status=$(ssh $sync_ip docker container inspect -f "{{.State.Status}}" syncthing)
+sync_hostname=the-server
+sync_ip=$(get_ip_from_hostname $sync_hostname)
+sync_status=$(ssh $sync_hostname docker container inspect -f "{{.State.Status}}" syncthing)
 sync_status=$(format_docker_server $sync_status)
 sync_port="15777"
 sync_users=""
@@ -134,7 +141,6 @@ echo -e "\e[0;33mGame Server  Port  Status  Users\e[0m"
 echo -e "\e[0mAsseto Corsa \e[0;36m$asse_port\e[0m $asse_status $asse_users"
 echo -e "\e[0mAutocorreet  \e[0;36m$auto_port \e[0m $auto_status $auto_users"
 echo -e "\e[0mFactorio     \e[0;36m$fact_port\e[0m $fact_status $fact_users"
-echo -e "\e[0mGrafana      \e[0;36m$graf_port \e[0m $graf_status $graf_users"
 echo -e "\e[0mMinecraft    \e[0;36m$mine_port\e[0m $mine_status $mine_users"
 echo -e "\e[0mSatisfactory \e[0;36m$sati_port\e[0m $sati_status $sati_users"
 echo -e ""
