@@ -3,7 +3,7 @@ Small info panel for my development needs, built to run on a small LCD screen on
 
 ## Features
 - Lists active GitHub user PRs
-- [wtfutil](https://wtfutil.com/) to display various bits of info including hacker news
+- [wtfutil](https://wtfutil.com/) to display various bits of info including [hacker news](https://news.ycombinator.com/)
 - a hacky bash script to monitor some containers hosted on another machine
 
 ![image](https://github.com/Shellywell123/pi-dash/blob/main/docs/photo.png)
