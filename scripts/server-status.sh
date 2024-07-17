@@ -97,18 +97,27 @@ auto_port="8080"
 auto_users=""
 auto_users=$(format_users_number $auto_users)
 
+# -------------------------------------------
+# Satisfactory
+# ------------------------------------------
+sati_status=$(ssh the-server docker container inspect -f "{{.State.Status}}" satisfactory)
+sati_status=$(format_docker_server $sati_status)
+sati_port="15777"
+sati_users=""
+sati_users=$(format_users_number $sati_users)
+
 # ------------------------------------------
 # Print Report
 # ------------------------------------------
-echo -e "\e[1mMachine      Address\e[0m"
+echo -e "\e[0;33mMachine      Address\e[0m"
 echo -e "berry        \e[0;36m$berry_ip\e[0m"
 echo -e "the-server   \e[0;36m$the_server_ip\e[0m"
 echo -e "Router       \e[0;36m$public_ip\e[0m"
 echo -e ""
-echo -e "\e[1mServer       Port  Status  Users\e[0m"
-echo -e "\e[0;31mAsseto Corsa \e[0;36m$asse_port\e[0m $asse_status $asse_users"
-echo -e "\e[0;34mAutocorreet  \e[0;36m$auto_port \e[0m $auto_status $auto_users"
-echo -e "\e[0;33mFactorio     \e[0;36m$fact_port\e[0m $fact_status $fact_users"
-echo -e "\e[0;33mGrafana      \e[0;36m$graf_port \e[0m $graf_status $graf_users"
-echo -e "\e[0;32mMinecraft    \e[0;36m$mine_port\e[0m $mine_status $mine_users"
-
+echo -e "\e[0;33mServer       Port  Status  Users\e[0m"
+echo -e "\e[0mAsseto Corsa \e[0;36m$asse_port\e[0m $asse_status $asse_users"
+echo -e "\e[0mAutocorreet  \e[0;36m$auto_port \e[0m $auto_status $auto_users"
+echo -e "\e[0mFactorio     \e[0;36m$fact_port\e[0m $fact_status $fact_users"
+echo -e "\e[0mGrafana      \e[0;36m$graf_port \e[0m $graf_status $graf_users"
+echo -e "\e[0mMinecraft    \e[0;36m$mine_port\e[0m $mine_status $mine_users"
+echo -e "\e[0mSatisfactory \e[0;36m$sati_port\e[0m $sati_status $sati_users"
