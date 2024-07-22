@@ -43,13 +43,13 @@ berry_ip=$(get_ip_from_hostname berry )
 the_server_ip=$(get_ip_from_hostname the-server)
 
 # ------------------------------------------
-# Asseto Corsa (yet to setup)
+# Assetto Corsa Server Manager
 # ------------------------------------------
-asses_hostname=the-server
+asse_hostname=the-server
 asse_ip=$(get_ip_from_hostname $asse_hostname)
-asse_status="-      "
+asse_status=$(ssh $asse_hostname docker container inspect -f "{{.State.Status}}" assetto-corsa-server-server-manager-1)
 asse_status=$(format_docker_server $asse_status)
-asse_port="-    "
+asse_port="8772"
 asse_users=""
 asse_users=$(format_users_number $asse_users)
 
@@ -108,6 +108,17 @@ mine_users=$(python3 scripts/minecraft-get-number-of-players.py $mine_ip)
 mine_users=$(format_users_number $mine_users)
 
 # -------------------------------------------
+# Rust
+# ------------------------------------------
+rust_hostname=rusty-server
+rust_ip=$(get_ip_from_hostname $rust_hostname)
+rust_status=$(ssh $rust_hostname docker container inspect -f "{{.State.Status}}" rust)
+rust_status=$(format_docker_server $rust_status)
+rust_port="28036"
+rust_users=""
+rust_users=$(format_users_number $rust_users)
+
+# -------------------------------------------
 # Satisfactory
 # ------------------------------------------
 sati_hostname=the-server
@@ -132,18 +143,20 @@ sync_users=$(format_users_number $sync_users)
 # ------------------------------------------
 # Print Report
 # ------------------------------------------
-echo -e "\e[0;33mMachine      Address\e[0m"
-echo -e "berry        \e[0;36m$berry_ip\e[0m"
-echo -e "the-server   \e[0;36m$the_server_ip\e[0m"
-echo -e "Router       \e[0;36m$public_ip\e[0m"
+echo -e "\e[0;33mMachine        Address\e[0m"
+echo -e "berry          \e[0;36m$berry_ip\e[0m"
+echo -e "the-server     \e[0;36m$the_server_ip\e[0m"
+echo -e "rusty-server   \e[0;36m$the_server_ip\e[0m"
+echo -e "Public IP      \e[0;36m$public_ip\e[0m"
 echo -e ""
-echo -e "\e[0;33mGame Server  Port  Status  Users\e[0m"
-echo -e "\e[0mAsseto Corsa \e[0;36m$asse_port\e[0m $asse_status $asse_users"
-echo -e "\e[0mAutocorreet  \e[0;36m$auto_port \e[0m $auto_status $auto_users"
-echo -e "\e[0mFactorio     \e[0;36m$fact_port\e[0m $fact_status $fact_users"
-echo -e "\e[0mMinecraft    \e[0;36m$mine_port\e[0m $mine_status $mine_users"
-echo -e "\e[0mSatisfactory \e[0;36m$sati_port\e[0m $sati_status $sati_users"
+echo -e "\e[0;33mGame Server    Port  Status  Users\e[0m"
+echo -e "\e[0mAssetto Corsa  \e[0;36m$asse_port \e[0m $asse_status $asse_users"
+echo -e "\e[0mAutocorreet    \e[0;36m$auto_port \e[0m $auto_status $auto_users"
+echo -e "\e[0mFactorio       \e[0;36m$fact_port\e[0m $fact_status $fact_users"
+echo -e "\e[0mMinecraft      \e[0;36m$mine_port\e[0m $mine_status $mine_users"
+echo -e "\e[0mRust           \e[0;36m$rust_port\e[0m $rust_status $rust_users"
+echo -e "\e[0mSatisfactory   \e[0;36m$sati_port\e[0m $sati_status $sati_users"
 echo -e ""
-echo -e "\e[0;33mApp Server   Port  Status  Users\e[0m"
-echo -e "\e[0mGrafana      \e[0;36m$graf_port \e[0m $graf_status $graf_users"
-echo -e "\e[0mSyncthing    \e[0;36m$sync_port\e[0m $sync_status $sync_users"
+echo -e "\e[0;33mApp Server     Port  Status  Users\e[0m"
+echo -e "\e[0mGrafana        \e[0;36m$graf_port \e[0m $graf_status $graf_users"
+echo -e "\e[0mSyncthing      \e[0;36m$sync_port\e[0m $sync_status $sync_users"
